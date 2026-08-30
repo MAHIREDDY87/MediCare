@@ -15,6 +15,7 @@ const port = 4000;
 // Allowed frontend origins
 const allowedOrigins = [
   "http://localhost:5173",
+  "http://localhost:5174",
 ];
 
 // CORS Middleware

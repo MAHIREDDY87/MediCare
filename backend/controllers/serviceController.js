@@ -62,6 +62,9 @@ export async function createService(req,res) {
         const rawSlots = parseJsonArrayField(b.slots);
         const slots = normalizeSlotsToMap(rawSlots);
         const numericPrice = sanitizePrice(b.price);
+        console.log("req.body =", req.body);
+        console.log("price received =", b.price);
+        console.log("numericPrice =", numericPrice);
         const available = parseAvailability(b.availability);
 
         let imageUrl = null;
@@ -80,7 +83,7 @@ export async function createService(req,res) {
             name:b.name,
             about:b.about || "",
             shortDescription:b.shortDescription || "",
-            price: numericPrice.
+            price: numericPrice,
             available,
             instructions,
             slots,
@@ -225,9 +228,9 @@ export async function deleteService(req,res) {
             }
         }
         await existing.deleteOne();
-        return res.status(500).json({
+        return res.status(200).json({
             success:true,
-            message:"Server Error"
+            message:"Server Deleted"
         });
     }
     catch(err){

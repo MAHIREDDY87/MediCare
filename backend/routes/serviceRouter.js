@@ -9,7 +9,7 @@ serviceRouter.get("/",getServices);
 serviceRouter.get("/:id",getServiceByID);
 
 serviceRouter.post("/",upload.single("image"),createService);
-serviceRouter.post("/:id", upload.single("image"),updateService);
+serviceRouter.put("/:id", upload.single("image"),updateService);
 
 serviceRouter.delete("/:id", deleteService);
 

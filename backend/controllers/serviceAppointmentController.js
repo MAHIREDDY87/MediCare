@@ -323,12 +323,12 @@ export const getServiceAppointments = async(req,res) =>{
         filter.$or = [{ patientName: re }, { mobile: re }, { notes: re }];
         }
 
-        const appointments = await ServiceAppointment.find(filter)
+        const appointments = await serviceAppointment.find(filter)
         .populate("serviceId", "name image imageUrl imageSmall")
         .sort({createdAt: -1})
         .skip(skip).limit(limit).lean();
         
-        const total =await ServiceAppointment.countDocuments(filter);
+        const total =await serviceAppointment.countDocuments(filter);
         return res.json({
             success:true,
             appointments,
